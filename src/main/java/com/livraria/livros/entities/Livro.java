@@ -3,12 +3,16 @@ package com.livraria.livros.entities;
 import com.livraria.livros.entities.enums.Autor;
 import com.livraria.livros.entities.enums.Categoria;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "livro")
 public class Livro implements Serializable {
-
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomeLivro;
     private String isbn;
