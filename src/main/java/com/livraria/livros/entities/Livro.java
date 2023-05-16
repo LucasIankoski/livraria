@@ -2,8 +2,11 @@ package com.livraria.livros.entities;
 
 import com.livraria.livros.entities.enums.Autor;
 import com.livraria.livros.entities.enums.Categoria;
+import com.sun.istack.NotNull;
+
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,11 +17,18 @@ public class Livro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String nomeLivro;
+    @NotBlank
     private String isbn;
+    @NotNull
     private Integer categoria;
+    @NotNull
     private Integer autor;
 
+    public Livro(){
+
+    }
     public Livro(Long id, String nomeLivro, String isbn, Categoria categoria, Autor autor) {
         this.id = id;
         this.nomeLivro = nomeLivro;
