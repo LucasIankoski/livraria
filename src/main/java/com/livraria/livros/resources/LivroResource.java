@@ -7,7 +7,9 @@ import com.livraria.livros.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RequestMapping(value = "/livros")
@@ -25,6 +27,13 @@ public class LivroResource {
     @PostMapping
     public ResponseEntity<Livro> cadastrarLivro(@RequestBody Livro obj){
         obj = livroService.cadastrarLivro(obj);
-        return ResponseEntity.ok().body(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deletarLivro(@PathVariable Long id){
+        livroService.deletarLivro(id);
+        return ResponseEntity.noContent().build();
     }
 }
