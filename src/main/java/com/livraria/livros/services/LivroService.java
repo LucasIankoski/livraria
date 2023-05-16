@@ -26,4 +26,17 @@ public class LivroService {
     public void deletarLivro(Long id){
         livroRepository.deleteById(id);
     }
+
+    public Livro atualizarLivro(Long id, Livro obj){
+        Livro livro = livroRepository.getReferenceById(id);
+        enviarDados(livro, obj);
+        return livroRepository.save(livro);
+    }
+
+    private void enviarDados(Livro livro, Livro obj) {
+        livro.setNomeLivro(obj.getNomeLivro());
+        livro.setIsbn(obj.getIsbn());
+        livro.setCategoria(obj.getCategoria());
+        livro.setAutor(obj.getAutor());
+    }
 }

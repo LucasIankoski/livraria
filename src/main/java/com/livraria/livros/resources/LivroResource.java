@@ -36,4 +36,10 @@ public class LivroResource {
         livroService.deletarLivro(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Livro> atualizarLivro(@PathVariable Long id, @RequestBody Livro obj){
+        obj = livroService.atualizarLivro(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
 }
