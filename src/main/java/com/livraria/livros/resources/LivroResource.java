@@ -6,9 +6,7 @@ import com.livraria.livros.entities.enums.Categoria;
 import com.livraria.livros.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,11 @@ public class LivroResource {
     public ResponseEntity<List<Livro>> findAll(){
         List<Livro> listaLivros = livroService.getTodosLivros();
         return ResponseEntity.ok().body(listaLivros);
+    }
+
+    @PostMapping
+    public ResponseEntity<Livro> cadastrarLivro(@RequestBody Livro obj){
+        obj = livroService.cadastrarLivro(obj);
+        return ResponseEntity.ok().body(obj);
     }
 }
