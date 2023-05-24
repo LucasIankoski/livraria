@@ -1,8 +1,6 @@
-package com.livraria.livros.resources;
+package com.livraria.livros.controller;
 
 import com.livraria.livros.entities.Livro;
-import com.livraria.livros.entities.enums.Autor;
-import com.livraria.livros.entities.enums.Categoria;
 import com.livraria.livros.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +12,7 @@ import java.util.List;
 
 @RequestMapping(value = "/livros")
 @RestController
-public class LivroResource {
+public class LivroController {
 
     @Autowired
     private LivroService livroService;
