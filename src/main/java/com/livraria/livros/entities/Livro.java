@@ -12,7 +12,8 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name = "livro")
 public class Livro implements Serializable {
@@ -20,38 +21,38 @@ public class Livro implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private Long id;
 
     @NotBlank
-    @Getter
-    @Setter
     private String nomeLivro;
 
     @NotBlank
-    @Getter
-    @Setter
     private String isbn;
 
     @NotNull
-    @Getter
-    @Setter
-    private Categoria categoria;
+    private Integer categoria;
 
     @NotNull
-    @Getter
-    @Setter
-    private Autor autor;
+    private Integer autor;
 
-    public Livro(){
-
-    }
     public Livro(Long id, String nomeLivro, String isbn, Categoria categoria, Autor autor) {
         this.id = id;
         this.nomeLivro = nomeLivro;
         this.isbn = isbn;
-        this.autor = autor;
-        this.categoria = categoria;
+        setAutor(autor);
+        setCategoria(categoria);
+    }
+
+    private void setCategoria(Categoria categoria) {
+        if(categoria != null){
+            this.categoria = categoria.getCodigo();
+        }
+    }
+
+    private void setAutor(Autor autor) {
+        if(autor != null){
+            this.autor = autor.getCodigo();
+        }
     }
 
     @Override
