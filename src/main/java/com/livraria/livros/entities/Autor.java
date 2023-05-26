@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +24,6 @@ public class Autor implements Serializable {
     private String nome;
 
     @OneToMany
-    private Livro livro;
+    private List<Livro> livro;
 
 }

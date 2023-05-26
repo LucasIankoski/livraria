@@ -1,8 +1,6 @@
 package com.livraria.livros.config;
 
 import com.livraria.livros.entities.Livro;
-import com.livraria.livros.entities.enums.Autor;
-import com.livraria.livros.entities.enums.Categoria;
 import com.livraria.livros.repositories.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
